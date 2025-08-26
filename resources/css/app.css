@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth dark transition */
+* { transition: background-color .15s ease, color .15s ease; }
