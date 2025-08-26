@@ -66,6 +66,10 @@ Route::middleware(['role:admin,manager,staff'])->group(function () {
     Route::resource('stock', StockMovementController::class);
 });
 
+Route::middleware(['role:admin,manager'])->group(function () {
+    Route::resource('stock/create', StockMovementController::class);
+});
+
 Route::middleware(['role:admin'])->group(function () {
     Route::resource('users', UserController::class);
 });

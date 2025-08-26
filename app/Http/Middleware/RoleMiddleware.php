@@ -12,7 +12,8 @@ class RoleMiddleware
             return redirect('/login');
         }
 
-        $userRole = auth()->user()->role;
+        $userRole = strtolower(auth()->user()->role);   // 🔑 pastikan lowercase
+        $roles = array_map('strtolower', $roles);       // 🔑 samakan ke lowercase
 
         // Jika admin, bypass semua pengecekan role
         if ($userRole === 'admin') {
