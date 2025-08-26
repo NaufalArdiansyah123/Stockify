@@ -162,11 +162,14 @@
                     <div class="flex items-center space-x-2 text-gray-700 mb-2">
                         <div class="w-2 h-2 bg-green-400 rounded-full pulse-glow"></div>
                         <span class="text-sm">Real-time Tracking</span>
-                   @if(auth()->user()->role !== 'staff')
-                    <a href="{{ route('suppliers.create') }}" class="action-btn btn-primary">
-                        Add Transaction
+                    </div>
+                   @auth
+                @if(auth()->user()->role !== 'manager')
+                    <a href="{{ route('suppliers.create') }}" class="industrial-button text-white px-6 py-3 rounded-xl font-semibold flex items-center space-x-2 hover-lift">
+                        Tambah Supplier
                     </a>
                  @endif
+                 @endauth
                 </div>
             </div>
         </div>
@@ -291,7 +294,6 @@
                                            class="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg">
                                             ✏️ Edit
                                         </a>
-                                        @if(auth()->user()->role !== 'staff')
                                         <form action="{{ route('stock.destroy',$m->id) }}" method="POST" class="inline">
                                             @csrf @method('DELETE')
                                             <button class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg" 
@@ -299,7 +301,6 @@
                                                 🗑️ Delete
                                             </button>
                                         </form>
-                                        @endif
                                     </div>
                                 </td>
                             </tr>
