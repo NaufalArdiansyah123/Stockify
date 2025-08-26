@@ -10,18 +10,8 @@ class StockConfirmation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id',
-        'quantity',
-        'type',
-        'note',
-        'status',
-        'requested_by',
-        'confirmed_by',
-        'confirmed_at'
-    ];
-
-    protected $casts = [
-        'confirmed_at' => 'datetime',
+        'product_id', 'quantity', 'type', 'note', 
+        'status', 'requested_by', 'confirmed_by'
     ];
 
     public function product()
@@ -37,20 +27,5 @@ class StockConfirmation extends Model
     public function confirmer()
     {
         return $this->belongsTo(User::class, 'confirmed_by');
-    }
-
-    public function scopePending($query)
-    {
-        return $query->where('status', 'pending');
-    }
-
-    public function scopeApproved($query)
-    {
-        return $query->where('status', 'approved');
-    }
-
-    public function scopeRejected($query)
-    {
-        return $query->where('status', 'rejected');
     }
 }

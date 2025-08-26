@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('stock_confirmations', function (Blueprint $table) {
             $table->id();
@@ -17,12 +20,19 @@ return new class extends Migration
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->foreignId('requested_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('confirmed_by')->nullable()->constrained('users')->onDelete('cascade');
-            $table->timestamp('confirmed_at')->nullable();
             $table->timestamps();
+            
+            // Index untuk performa query
+            $table->index('status');
+            $table->index('type');
+            $table->index('created_at');
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::dropIfExists('stock_confirmations');
     }

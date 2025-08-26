@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class StockController extends Controller
 {
+
     /**
      * Tampilkan daftar stock movement
      */
@@ -107,7 +108,7 @@ class StockController extends Controller
                 ->withInput();
         }
 
-        // Buat permintaan konfirmasi stok
+        // Create stock confirmation request (bukan langsung memproses transaksi)
         StockConfirmation::create([
             'product_id' => $productId,
             'quantity' => $request->qty,
@@ -115,6 +116,17 @@ class StockController extends Controller
             'note' => $request->note,
             'status' => 'pending',
             'requested_by' => auth()->id()
+        ]);
+
+        // JANGAN update stok produk di sini
+        // Stok akan diupdate setelah staff mengonfirmasi
+        
+        // Log the confirmation request
+        \Log::info('Stock confirmation request created', [
+            'product_id' => $productId,
+            'product_name' => $product->name,
+            'type' => $request->type,
+            'qty' => $request->qty
         ]);
 
         DB::commit();
