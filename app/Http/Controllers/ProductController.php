@@ -85,6 +85,13 @@ class ProductController extends Controller
         return view('products.create', compact('categories','suppliers'));
     }
 
+    public function show($id)
+{
+    $product = Product::with('category')->findOrFail($id);
+    return view('products.show', compact('product'));
+}
+
+
     public function store(Request $r)
     {
         $data = $r->validate([

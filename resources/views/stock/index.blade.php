@@ -164,9 +164,9 @@
                         <span class="text-sm">Real-time Tracking</span>
                     </div>
                    @auth
-                @if(auth()->user()->role !== 'manager')
-                    <a href="{{ route('suppliers.create') }}" class="industrial-button text-white px-6 py-3 rounded-xl font-semibold flex items-center space-x-2 hover-lift">
-                        Tambah Supplier
+                @if(auth()->user()->role !== 'staff')
+                    <a href="{{ route('stock.create') }}" class="industrial-button text-white px-6 py-3 rounded-xl font-semibold flex items-center space-x-2 hover-lift">
+                        Tambah Stock
                     </a>
                  @endif
                  @endauth

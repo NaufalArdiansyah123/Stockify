@@ -1,4 +1,4 @@
-@extends('layouts.app')
+?@extends('layouts.app')
 
 @section('content')
 <style>
@@ -398,12 +398,12 @@
                         
                         <div>
                             <label class="industrial-label">Product Attributes (JSON)</label>
-                            <textarea 
+                            <input
                                 name="attributes" 
                                 class="industrial-input" 
                                 rows="4"
                                 placeholder='{"color": "red", "size": "large"}'
-                            >{{ json_encode($product->attributes) }}</textarea>
+                                value="{{ $product->attributes }}" />
                         </div>
                     </div>
                 </div>

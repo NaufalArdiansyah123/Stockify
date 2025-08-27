@@ -164,10 +164,11 @@
                         <p class="text-gray-600 text-sm mt-1">Add a new product to your inventory system</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <div class="w-2 h-2 bg-green-400 rounded-full pulse-glow"></div>
-                    <span class="text-green-600 text-sm font-semibold">Ready to Create</span>
-                </div>
+                 <a href="{{ route('products.index') }}" 
+                           class="back-button px-6 py-4 text-white rounded-xl font-bold text-lg flex items-center justify-center space-x-3 hover-lift transition-all duration-300">
+                            <span class="text-xl">↩️</span>
+                            <span>Back</span>
+                </a>
             </div>
         </div>
 
