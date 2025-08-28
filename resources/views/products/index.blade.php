@@ -426,7 +426,7 @@
                                             </a>
                                             <a href="{{ route('products.show', $i) }}" 
                                                class="action-button edit-button px-3 py-2 text-white rounded-lg font-semibold flex items-center space-x-1">
-                                                <span class="text-xs">✏️</span>
+                                                <span class="text-xs"></span>
                                                 <span>Detail</span>
                                             </a>
                                             <form action="{{ route('products.destroy', $i) }}" method="POST" class="inline">
